@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('escalada', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router'])
+angular.module('escalada', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ngResource'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
@@ -10,5 +10,4 @@ angular.module('escalada', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
       });
 
     $urlRouterProvider.otherwise('/');
-  })
-;
+  });

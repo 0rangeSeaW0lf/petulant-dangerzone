@@ -1,64 +1,57 @@
 'use strict';
 
 angular.module('escalada')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      {
-        'title': 'AngularJS',
-        'url': 'https://angularjs.org/',
-        'description': 'HTML enhanced for web apps!',
-        'logo': 'angular.png'
-      },
-      {
-        'title': 'BrowserSync',
-        'url': 'http://browsersync.io/',
-        'description': 'Time-saving synchronised browser testing.',
-        'logo': 'browsersync.png'
-      },
-      {
-        'title': 'GulpJS',
-        'url': 'http://gulpjs.com/',
-        'description': 'The streaming build system.',
-        'logo': 'gulp.png'
-      },
-      {
-        'title': 'Jasmine',
-        'url': 'http://jasmine.github.io/',
-        'description': 'Behavior-Driven JavaScript.',
-        'logo': 'jasmine.png'
-      },
-      {
-        'title': 'Karma',
-        'url': 'http://karma-runner.github.io/',
-        'description': 'Spectacular Test Runner for JavaScript.',
-        'logo': 'karma.png'
-      },
-      {
-        'title': 'Protractor',
-        'url': 'https://github.com/angular/protractor',
-        'description': 'End to end test framework for AngularJS applications built on top of WebDriverJS.',
-        'logo': 'protractor.png'
-      },
-      {
-        'title': 'jQuery',
-        'url': 'http://jquery.com/',
-        'description': 'jQuery is a fast, small, and feature-rich JavaScript library.',
-        'logo': 'jquery.jpg'
-      },
-      {
-        'title': 'Bootstrap',
-        'url': 'http://getbootstrap.com/',
-        'description': 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.',
-        'logo': 'bootstrap.png'
-      },
-      {
-        'title': 'Sass (Node)',
-        'url': 'https://github.com/sass/node-sass',
-        'description': 'Node.js binding to libsass, the C version of the popular stylesheet preprocessor, Sass.',
-        'logo': 'node-sass.png'
+  .controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+    var req = {
+      method: 'GET',
+      //url: 'https://s3-eu-west-1.amazonaws.com/developer-application-test/cart/list',
+      url: 'https://s3-eu-west-1.amazonaws.com/developer-application-test/cart/1/detail', // ../{product_id}/detail
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Origin':'https://petulant-dangerzone-jmorenor.c9.io',
+        'Access-Control-Allow-Origin': 'https://petulant-dangerzone-jmorenor.c9.io',
+        //'Access-Control-Allow-Origin': 'http://localhost',
+        //'Access-Control-Allow-Origin': '*',
       }
-    ];
-    angular.forEach($scope.awesomeThings, function(awesomeThing) {
-      awesomeThing.rank = Math.random();
+      // , data: { test: 'test' },
+      };
+    $http(req).success(function(data, status, headers, config){
+      console.log("-------------------------------------------");
+      console.log("Yep!");
+      console.log(status);
+      console.log(headers);
+      console.log(data);
+      console.log("-------------------------------------------");
+    }).
+    error(function(data, status, headers, config) {
+      console.log("-------------------------------------------");
+      console.log("Nope");
+      console.log(status);
+      console.log(headers);
+      console.log("-------------------------------------------");
     });
-  });
+    $http.jsonp('https://s3-eu-west-1.amazonaws.com/developer-application-test/cart/1/detail',
+                {headers: {
+                  'Content-Type': 'application/json',
+                  // 'Origin':'https://petulant-dangerzone-jmorenor.c9.io',
+                  'Access-Control-Allow-Origin': 'https://petulant-dangerzone-jmorenor.c9.io',
+                  //'Access-Control-Allow-Origin': 'http://localhost',
+                  //'Access-Control-Allow-Origin': '*',
+                }
+
+    }).success(function(data, status, headers, config){
+      console.log("-------------------------------------------");
+      console.log("Yep!");
+      console.log(status);
+      console.log(headers);
+      console.log(data);
+      console.log("-------------------------------------------");
+    }).
+    error(function(data, status, headers, config) {
+      console.log("-------------------------------------------");
+      console.log("Nope");
+      console.log(status);
+      console.log(headers);
+      console.log("-------------------------------------------");
+    });
+  }]);
