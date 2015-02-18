@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('escalada', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ngResource'])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     $stateProvider
       .state('home', {
         url: '/',
@@ -10,4 +10,7 @@ angular.module('escalada', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
       });
 
     $urlRouterProvider.otherwise('/');
+
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
   });
