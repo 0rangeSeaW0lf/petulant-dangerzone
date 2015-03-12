@@ -3,6 +3,4 @@ bower_components/
 .sass-cache/
 .tmp/
 dist/
-
-# Ignore Cloud9 files
 .c9/

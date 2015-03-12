@@ -3,7 +3,7 @@
 describe('controllers', function(){
   var scope;
 
-  beforeEach(module('escalada'));
+  beforeEach(module('workspace'));
 
   beforeEach(inject(function($rootScope) {
     scope = $rootScope.$new();

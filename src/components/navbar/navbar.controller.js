@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('escalada')
+angular.module('workspace')
   .controller('NavbarCtrl', function ($scope) {
     $scope.date = new Date();
   });
