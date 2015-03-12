@@ -2,10 +2,10 @@
 
 angular.module('workspace')
   .controller('MainCtrl',function(){})
-  .directive('yoYo', function(){
+  .directive('signIn', function(){
     return {
       // template: '<strong>Yo!<strong>',
-      template: '<div class="yo-yo">Yo <span ng-transclude></span>!</div>',
+      templateUrl: 'app/main/simpleform.html',
       transclude: true,
       restrict: 'E',
       replace: true
